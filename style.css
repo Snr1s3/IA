@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background: linear-gradient(135deg, rgba(168, 230, 255, 0.062), rgba(240, 249, 255, 0.178)), 
-                url('i-attempted-a-frutiger-aero-wallpaper-design-v0-kqbqrz5mo8bb1.png'); /* Replace with your PNG file path */
+                url('./i-attempted-a-frutiger-aero-wallpaper-design-v0-kqbqrz5mo8bb1.png'); /* Replace with your PNG file path */
     background-size: cover; /* Ensure the image covers the entire background */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent the image from repeating */
