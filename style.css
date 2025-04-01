@@ -21,13 +21,16 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    width: 90%; /* Ensure it fits smaller screens */
 }
 
 /* Heading styling */
 h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #007bff;
     margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* Status box styling */
@@ -35,10 +38,11 @@ h1 {
     margin: 20px 0;
     font-size: 18px;
     color: #555;
-    padding: 10px;
+    padding: 15px;
     background-color: #f8f9fa;
     border: 1px solid #ddd;
     border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Webcam container styling */
@@ -48,6 +52,7 @@ h1 {
     align-items: center;
     margin: 20px auto;
     width: 100%;
+    flex-direction: column;
 }
 
 /* Webcam styling */
@@ -56,9 +61,19 @@ h1 {
     margin: 0 auto;
     width: 100%;
     max-width: 640px;
+    height: auto;
     border: 2px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Button container styling */
+#button-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
 }
 
 /* Button styling */
@@ -72,16 +87,18 @@ button {
     cursor: pointer;
     background-color: #007bff;
     color: white;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 button:hover {
     background-color: #0056b3;
     transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 button:active {
     transform: scale(1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* File upload and image display styling */
@@ -95,20 +112,32 @@ button:active {
 }
 
 /* Prediction container styling */
+#label-container {
+    margin-top: 20px;
+    text-align: left;
+}
+
 .prediction-container {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    padding: 5px;
+    padding: 10px;
     background-color: #f8f9fa;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.prediction-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .prediction-label {
-    width: 120px;
+    width: 150px;
     font-weight: bold;
     color: #333;
+    text-align: left;
 }
 
 .prediction-bar {
@@ -123,4 +152,28 @@ button:active {
     margin-left: 10px;
     font-weight: bold;
     color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    #webcam {
+        max-width: 100%;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    #status {
+        font-size: 16px;
+    }
+
+    .prediction-label {
+        width: 120px;
+    }
 }
