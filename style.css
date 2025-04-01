@@ -14,7 +14,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow: hidden;
+    overflow-y: auto; /* Allow vertical scrolling */
 }
 
 /* Main container styling */
@@ -28,6 +28,7 @@ body {
     text-align: center;
     width: 80%; /* Ensure it fits smaller screens */
     backdrop-filter: blur(10px); /* Add a blur effect to the background */
+    overflow: hidden; /* Prevent content from overflowing the container */
 }
 
 /* Heading styling */
