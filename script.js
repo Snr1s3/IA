@@ -11,7 +11,7 @@ const imageDisplay = document.getElementById('image-display');
 let model, webcam, maxPredictions;
 
 // Teachable Machine model URL
-const URL = "https://teachablemachine.withgoogle.com/models/aRZCn6XgD/";
+const URL = "https://teachablemachine.withgoogle.com/models/1qaEGg823/";
 
 // Load the Teachable Machine model on page load
 loadModel();
