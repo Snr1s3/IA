@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Classifier</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Product Classifier</h1>
+        
+        <!-- Status message -->
+        <div id="status">Status: Waiting for input...</div>
+        
+        <!-- Webcam video feed -->
+        <video id="webcam" autoplay playsinline width="200" height="200">Hola</video>
+        
+        <!-- Buttons for enabling webcam and resetting -->
+        <button id="enableCam">Enable Camera</button>
+        <button id="takePhoto">Take Photo</button>
+        <button id="reset">Reset</button>
+        
+        <!-- File upload for image classification -->
+        <input type="file" id="imageUpload" accept="image/*">
+        <!-- Display uploaded or dropped image -->
+        <div id="image-display"></div>
+        <!-- Predictions container -->
+        <div id="label-container"></div>
+    </div>
+
+    <!-- Teachable Machine Integration -->
+    <div id="webcam-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
