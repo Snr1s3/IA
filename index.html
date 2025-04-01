@@ -26,7 +26,10 @@
         </div>
         
         <!-- File upload for image classification -->
-        <input type="file" id="imageUpload" accept="image/*">
+        <div id="file-upload-container">
+            <label for="imageUpload" class="file-label">Upload an Image</label>
+            <input type="file" id="imageUpload" accept="image/*">
+        </div>
         
         <!-- Display uploaded or dropped image -->
         <div id="image-display"></div>

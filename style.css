@@ -3,13 +3,16 @@ body {
     font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #a8e6ff, #f0f9ff);
+    background: linear-gradient(135deg, rgba(168, 230, 255, 0.8), rgba(240, 249, 255, 0.8)), 
+                url('i-attempted-a-frutiger-aero-wallpaper-design-v0-kqbqrz5mo8bb1.png');
+    background-size: cover;
     color: #333;
     line-height: 1.6;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 /* Main container styling */
@@ -104,7 +107,41 @@ button:active {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* File upload and image display styling */
+/* File upload container styling */
+#file-upload-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.file-label {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #007bff, #00c6ff);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.file-label:hover {
+    background: linear-gradient(135deg, #0056b3, #0099cc);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.file-label:active {
+    transform: scale(1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#imageUpload {
+    display: none; /* Hide the default file input */
+}
+
+/* Image display styling */
 #image-display img {
     max-width: 100%;
     max-height: 300px;
@@ -112,49 +149,6 @@ button:active {
     border: 2px solid #ddd;
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* Prediction container styling */
-#label-container {
-    margin-top: 20px;
-    text-align: left;
-}
-
-.prediction-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    padding: 10px;
-    background: linear-gradient(135deg, #e0f7fa, #ffffff);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
-}
-
-.prediction-container:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.prediction-label {
-    width: 150px;
-    font-weight: bold;
-    color: #333;
-    text-align: left;
-}
-
-.prediction-bar {
-    height: 20px;
-    background: linear-gradient(135deg, #4caf50, #81c784);
-    margin-left: 10px;
-    border-radius: 5px;
-    transition: width 0.3s ease;
-}
-
-.prediction-percentage {
-    margin-left: 10px;
-    font-weight: bold;
-    color: #555;
 }
 
 /* Responsive Design */
@@ -175,10 +169,6 @@ button:active {
     #status {
         font-size: 16px;
     }
-
-    .prediction-label {
-        width: 120px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -193,10 +183,6 @@ button:active {
 
     #status {
         font-size: 14px;
-    }
-
-    .prediction-label {
-        width: 100px;
     }
 
     #container {
