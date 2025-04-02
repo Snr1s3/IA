@@ -9,36 +9,21 @@
 <body>
     <div id="container">
         <h1>Product Classifier</h1>
-        
-        <!-- Status message -->
         <div id="status">Status: Waiting for input...</div>
-        
-        <!-- Webcam video feed -->
         <div id="webcam-container">
-               
         </div>
-        
-        <!-- Buttons for enabling webcam and resetting -->
         <div id="button-container">
             <button id="enableCam">Enable Camera</button>
             <button id="takePhoto">Take Photo</button>
             <button id="reset">Reset</button>
         </div>
-        
-        <!-- File upload for image classification -->
         <div id="file-upload-container">
             <label for="imageUpload" class="file-label">Upload an Image</label>
             <input type="file" id="imageUpload" accept="image/*">
         </div>
-        
-        <!-- Display uploaded or dropped image -->
         <div id="image-display"></div>
-        
-        <!-- Predictions container -->
         <div id="label-container"></div>
     </div>
-
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="script.js"></script>
