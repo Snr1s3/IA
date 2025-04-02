@@ -10,10 +10,8 @@ const imageDisplay = document.getElementById('image-display');
 
 let model, webcam, maxPredictions;
 
-// Teachable Machine model URL
-const URL = "https://teachablemachine.withgoogle.com/models/1qaEGg823/"; // Replace with your model URL
+const URL = "https://teachablemachine.withgoogle.com/models/1qaEGg823/"; 
 
-// Load the Teachable Machine model on page load
 loadModel();
 
 ENABLE_CAM_BUTTON.addEventListener('click', enableCam);
@@ -28,12 +26,9 @@ async function loadModel() {
     const metadataURL = URL + "metadata.json";
 
     try {
-        // Load the model and metadata
         model = await tmImage.load(modelURL, metadataURL);
         maxPredictions = model.getTotalClasses();
         console.log('Model loaded successfully:', model);
-
-        // Prepare label container for predictions
         for (let i = 0; i < maxPredictions; i++) {
             LABEL_CONTAINER.appendChild(document.createElement("div"));
         }
@@ -63,14 +58,13 @@ async function enableCam() {
 
 
 async function loop() {
-    webcam.update(); // Update the webcam frame
+    webcam.update();
     await predictFromWebcam();
     window.requestAnimationFrame(loop);
 }
 
 async function predictFromWebcam() {
     try {
-        // Run the webcam image through the model
         const prediction = await model.predict(webcam.canvas);
         displayPredictions(prediction);
     } catch (error) {
@@ -80,33 +74,22 @@ async function predictFromWebcam() {
 
 async function takePhoto() {
     if (webcam && model) {
-        // Capture the current frame from the webcam
         const imageCanvas = document.createElement('canvas');
         imageCanvas.width = webcam.canvas.width;
         imageCanvas.height = webcam.canvas.height;
         const ctx = imageCanvas.getContext('2d');
-
-        // Draw the current frame onto the canvas
         ctx.drawImage(webcam.canvas, 0, 0, imageCanvas.width, imageCanvas.height);
-
-        // Convert canvas to an image
         const capturedImage = document.createElement('img');
         capturedImage.src = imageCanvas.toDataURL();
         capturedImage.style.maxWidth = '100%';
         capturedImage.style.border = '2px solid #ddd';
         capturedImage.style.borderRadius = '10px';
         capturedImage.style.marginTop = '20px';
-
-        // Display captured image
-        imageDisplay.innerHTML = ''; // Clear previous content
+        imageDisplay.innerHTML = ''; 
         imageDisplay.appendChild(capturedImage);
-
         STATUS.innerText = 'Photo taken! Classifying...';
-
-        // Wait for the image to load before classifying
         capturedImage.onload = async () => {
             try {
-                // Classify the image using the canvas
                 const prediction = await model.predict(imageCanvas);
                 displayPredictions(prediction);
             } catch (error) {
@@ -127,55 +110,40 @@ async function classifyUploadedImage(event) {
         const reader = new FileReader();
 
         reader.onload = async (e) => {
-            image.src = e.target.result; // Use the file's data URL
+            image.src = e.target.result; 
             image.onload = async () => {
                 const prediction = await model.predict(image);
                 displayPredictions(prediction);
             };
-
-            // Display the uploaded image
             imageDisplay.innerHTML = '';
             imageDisplay.appendChild(image);
         };
-
-        reader.readAsDataURL(file); // Read the file as a data URL
+        reader.readAsDataURL(file); 
     }
 }
 
 function displayPredictions(predictions) {
-    LABEL_CONTAINER.innerHTML = ''; // Clear previous predictions
-
+    LABEL_CONTAINER.innerHTML = ''; 
     predictions.forEach(prediction => {
-        // Create a container for each prediction
         const predictionContainer = document.createElement('div');
         predictionContainer.style.display = 'flex';
         predictionContainer.style.alignItems = 'center';
         predictionContainer.style.marginBottom = '8px';
-
-        // Create a label for the class name
         const label = document.createElement('span');
         label.innerText = `${prediction.className}: `;
-        label.style.width = '100px'; // Fixed width for alignment
+        label.style.width = '100px'; 
         label.style.fontWeight = 'bold';
-
-        // Create a bar to represent the percentage
         const bar = document.createElement('div');
         bar.style.height = '20px';
-        bar.style.width = `${prediction.probability * 100}%`; // Scale probability to percentage
-        bar.style.backgroundColor = '#4caf50'; // Green color for the bar
+        bar.style.width = `${prediction.probability * 100}%`; 
+        bar.style.backgroundColor = '#4caf50'; 
         bar.style.marginLeft = '10px';
-
-        // Create a percentage label
         const percentage = document.createElement('span');
         percentage.innerText = `${(prediction.probability * 100).toFixed(2)}%`;
         percentage.style.marginLeft = '10px';
-
-        // Append elements to the prediction container
         predictionContainer.appendChild(label);
         predictionContainer.appendChild(bar);
         predictionContainer.appendChild(percentage);
-
-        // Append the prediction container to the label container
         LABEL_CONTAINER.appendChild(predictionContainer);
     });
 }
@@ -183,6 +151,6 @@ function displayPredictions(predictions) {
 function reset() {
     STATUS.innerText = 'Resetting...';
     setTimeout(() => {
-        location.reload(); // Reload the webpage
-    }, 500); // Optional delay for better user experience
+        location.reload();
+    }, 500);
 }
